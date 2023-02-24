@@ -18,18 +18,9 @@ jobs:
         with:
           path: build
           key: macos-cmake-v3
-      - name: Configure
-        run: | 
-          cmake \
-            -B build \
-            -D CMAKE_BUILD_TYPE=RelWithDebInfo \
-            # EOL
       - name: Build
         run: | 
-          cmake \
-            --build build \
-            -j $(sysctl -n hw.physicalcpu) \
-            --target package \
+          make \
             # EOL
       - name: Upload
         uses: actions/upload-artifact@v3
